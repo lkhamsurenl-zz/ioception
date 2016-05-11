@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftClient
+import SwiftyJSON
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -70,19 +71,60 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func getNutritionalInformation(item: String) {
+    /***************                     Nutrition                              *********************/
+    // Given code of the item and client, get nutritional information from nal.usda.gov website api.
+    func getNutritionalInformationWithNDBNO(ndbno: String, client: Client) {
+        // Get nutritional information.
+        client.get("/reports")
+            .query(["ndbno": ndbno, "type": "f", "format": "json", "api_key":"TpZYfnYrrehgVWOiJiNV2LsIyt7gg6QG9G6Fj7E1"])
+            .end({(res:Response) -> Void in
+                if(res.basicStatus == .OK) { // status of 2xx
+                    if let dataFromString = res.text!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                        let json = JSON(data: dataFromString)
+                        
+                        // Get JSON on nutrients.
+                        let nutrients_json = json["report"]["food"]["nutrients"]
+                        let nutrients = Nutrition(inputJson: nutrients_json)
+                        
+                        // Display nutritional information to the user.
+                        self.showAlertWithMessage(nutrients.description)
+                    }
+                    
+                }
+                else {
+                    print("api call error: \(res.body)")
+                }
+            })
+    }
+    
+    func getNutrition(item: String) {
+        var ndbno = ""
         
         let client = Client()
-            .baseUrl("https://api.nutritionix.com/v1_1/search/\(item)?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=b477e8aa&appKey=1cab4bd6f3ce19e838516becca446ed9")
+            .baseUrl("https://api.nal.usda.gov/ndb/")
             .onError({error in
                 print("api call error: \(error)")
                 self.showAlertWithMessage("Could not connect to the server.\nPlease try agiain.")
             });
         
-        client.get("/")
+        client.get("/search")
+            .query(["format": "json", "q": item, "sort": "n", "max": "1", "offset": "0", "api_key":"TpZYfnYrrehgVWOiJiNV2LsIyt7gg6QG9G6Fj7E1"])
             .end({(res:Response) -> Void in
-                print(res.text)
+                if(res.basicStatus == .OK) { // status of 2xx
+                    if let dataFromString = res.text!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+                        let json = JSON(data: dataFromString)
+                        
+                        ndbno = json["list"]["item"][0]["ndbno"].string!
+                        
+                        self.getNutritionalInformationWithNDBNO(ndbno, client: client)
+                    }
+                    
+                }
+                else {
+                    print("api call error: \(res.body)")
+                }
             })
+        
     }
     /***************                   Classification                           *********************/
     @IBOutlet var classifyButton: UIButton!
@@ -125,10 +167,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 handler: { (alert: UIAlertAction!) in
                     self.hideSecondView()
                     self.classifyButton.selected = false
-                    // self.getNutritionalInformation("apple")
             }))
             
             self.presentViewController(alertController, animated: true, completion: nil)
+        })
+    }
+    
+    // showLabels displays all the label options to the user.
+    func showLabels(labels: Labels) {
+        // Display alert control should happen in the main thread.
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            // display a controller to show the camera or album to select an image.
+            // Craete an action sheet with options: camera, album, and cancel.
+            let actionSheet = UIAlertController(title: "Labels", message: nil, preferredStyle: .ActionSheet)
+            
+            for (label, _) in labels.labels {
+                actionSheet.addAction(UIAlertAction(title: label, style: .Default, handler: {
+                    action in
+                    self.getNutrition(label)
+                }))
+            }
+            
+            // Cancel action sheet.
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            
+            self.presentViewController(actionSheet, animated: true, completion: nil)
         })
     }
     
@@ -141,9 +204,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Replace \\\" by \".
         let newString = strippedString.stringByReplacingOccurrencesOfString("\\\"", withString: "\"", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
-        let labels = Labels(inputJson: newString)
-        
-        self.showAlertWithMessage(labels.description)
+        // Display labels to user for selection.
+        self.showLabels(Labels(inputJson: newString))
     }
     
     @IBOutlet var secondView: UIView!

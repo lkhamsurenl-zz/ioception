@@ -39,3 +39,8 @@ Thumbs.db
 # Ignore dependency #
 ######################
 SwiftClient
+Podfile
+Podfile.lock
+Pods/
+ioception.xcodeproj/project.xcworkspace/xcshareddata/
+ioception.xcworkspace/

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61A14EF2D77A536ECB1E6951 /* Pods_ioception.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C605849A6A9BB311BFF3FD36 /* Pods_ioception.framework */; };
 		B615FBE61CBC8B30001A8599 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615FBE51CBC8B30001A8599 /* ImageUtils.swift */; };
 		B615FBE91CBC8CAF001A8599 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615FBE81CBC8CAF001A8599 /* Labels.swift */; };
 		B623A0F01CB704C90050B867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B623A0EF1CB704C90050B867 /* AppDelegate.swift */; };
@@ -16,6 +17,10 @@
 		B623A0FA1CB704C90050B867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B623A0F81CB704C90050B867 /* LaunchScreen.storyboard */; };
 		B623A1121CB720890050B867 /* SwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B623A10D1CB71FD80050B867 /* SwiftClient.framework */; };
 		B623A1161CB752310050B867 /* SwiftClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B623A10D1CB71FD80050B867 /* SwiftClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B65F17251CE1769900BFB727 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C51A4F1CE1765200688E9E /* SwiftyJSON.framework */; };
+		B65F17261CE1769900BFB727 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6C51A4F1CE1765200688E9E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B65F172A1CE265CC00BFB727 /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65F17291CE265CC00BFB727 /* Nutrition.swift */; };
+		B6C51A501CE1765200688E9E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C51A4F1CE1765200688E9E /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B65F17261CE1769900BFB727 /* SwiftyJSON.framework in Embed Frameworks */,
 				B623A1161CB752310050B867 /* SwiftClient.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -64,6 +70,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A2EC4D8C2BDD574D9F2A23BA /* Pods-ioception.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ioception.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ioception/Pods-ioception.debug.xcconfig"; sourceTree = "<group>"; };
+		B045BC4CD103AD63623A55BC /* Pods-ioception.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ioception.release.xcconfig"; path = "Pods/Target Support Files/Pods-ioception/Pods-ioception.release.xcconfig"; sourceTree = "<group>"; };
 		B615FBE51CBC8B30001A8599 /* ImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		B615FBE81CBC8CAF001A8599 /* Labels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		B623A0EC1CB704C90050B867 /* ioception.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ioception.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +82,9 @@
 		B623A0F91CB704C90050B867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B623A0FB1CB704C90050B867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B623A1071CB71FD80050B867 /* SwiftClient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftClient.xcodeproj; path = SwiftClient/SwiftClient.xcodeproj; sourceTree = "<group>"; };
+		B65F17291CE265CC00BFB727 /* Nutrition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nutrition.swift; sourceTree = "<group>"; };
+		B6C51A4F1CE1765200688E9E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../Library/Developer/Xcode/DerivedData/ioception-bzsrbpknwuorgjasnszfkfhojzhg/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		C605849A6A9BB311BFF3FD36 /* Pods_ioception.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ioception.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,19 +92,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B65F17251CE1769900BFB727 /* SwiftyJSON.framework in Frameworks */,
+				B6C51A501CE1765200688E9E /* SwiftyJSON.framework in Frameworks */,
 				B623A1121CB720890050B867 /* SwiftClient.framework in Frameworks */,
+				61A14EF2D77A536ECB1E6951 /* Pods_ioception.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10C0A6ABA9A3177C6749AFBB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A2EC4D8C2BDD574D9F2A23BA /* Pods-ioception.debug.xcconfig */,
+				B045BC4CD103AD63623A55BC /* Pods-ioception.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		86E87CAA2721D015A1AD5623 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6C51A4F1CE1765200688E9E /* SwiftyJSON.framework */,
+				C605849A6A9BB311BFF3FD36 /* Pods_ioception.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B623A0E31CB704C90050B867 = {
 			isa = PBXGroup;
 			children = (
 				B623A1071CB71FD80050B867 /* SwiftClient.xcodeproj */,
 				B623A0EE1CB704C90050B867 /* ioception */,
 				B623A0ED1CB704C90050B867 /* Products */,
+				10C0A6ABA9A3177C6749AFBB /* Pods */,
+				86E87CAA2721D015A1AD5623 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +146,7 @@
 				B623A0F11CB704C90050B867 /* ViewController.swift */,
 				B615FBE51CBC8B30001A8599 /* ImageUtils.swift */,
 				B615FBE81CBC8CAF001A8599 /* Labels.swift */,
+				B65F17291CE265CC00BFB727 /* Nutrition.swift */,
 				B623A0F31CB704C90050B867 /* Main.storyboard */,
 				B623A0F61CB704C90050B867 /* Assets.xcassets */,
 				B623A0F81CB704C90050B867 /* LaunchScreen.storyboard */,
@@ -136,10 +171,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B623A0FE1CB704C90050B867 /* Build configuration list for PBXNativeTarget "ioception" */;
 			buildPhases = (
+				C8EA85378B825ABE02319087 /* 📦 Check Pods Manifest.lock */,
 				B623A0E81CB704C90050B867 /* Sources */,
 				B623A0E91CB704C90050B867 /* Frameworks */,
 				B623A0EA1CB704C90050B867 /* Resources */,
 				B623A1191CB752310050B867 /* Embed Frameworks */,
+				945EF924125BF1AB2A2D6181 /* 📦 Embed Pods Frameworks */,
+				DE6945FFE30AC6DA59562638 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,6 +260,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		945EF924125BF1AB2A2D6181 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ioception/Pods-ioception-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8EA85378B825ABE02319087 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE6945FFE30AC6DA59562638 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ioception/Pods-ioception-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B623A0E81CB704C90050B867 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -229,6 +315,7 @@
 			files = (
 				B623A0F21CB704C90050B867 /* ViewController.swift in Sources */,
 				B623A0F01CB704C90050B867 /* AppDelegate.swift in Sources */,
+				B65F172A1CE265CC00BFB727 /* Nutrition.swift in Sources */,
 				B615FBE91CBC8CAF001A8599 /* Labels.swift in Sources */,
 				B615FBE61CBC8B30001A8599 /* ImageUtils.swift in Sources */,
 			);
@@ -356,6 +443,7 @@
 		};
 		B623A0FF1CB704C90050B867 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2EC4D8C2BDD574D9F2A23BA /* Pods-ioception.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -371,6 +459,7 @@
 		};
 		B623A1001CB704C90050B867 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B045BC4CD103AD63623A55BC /* Pods-ioception.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
